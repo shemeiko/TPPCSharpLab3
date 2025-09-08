@@ -222,7 +222,7 @@ public class MyDate
     {
         if (second > 59 || second < 0
             || minute < 0 || minute > 59 
-            || hour < 0 || hour > 24)
+            || hour < 0 || hour > 23)
             return true;
         return false;
     }
