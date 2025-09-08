@@ -14,8 +14,8 @@ public class MyDate
         get => hour;
         set
         {
-            if (value < 0 && value > 24)
-                throw new ArgumentOutOfRangeException("Hours should be >= 0 and <= 24!");
+            if (value < 0 || value > 23)
+                throw new ArgumentOutOfRangeException("Hours should be >= 0 and <= 23!");
             hour = value;
         }
     }
@@ -25,7 +25,7 @@ public class MyDate
         get => minute;
         set
         {
-            if (value < 0 && value > 59)
+            if (value < 0 || value > 59)
                 throw new ArgumentOutOfRangeException("Minutes should be >= 0 and <= 59!");
             minute = value;
         }
@@ -36,8 +36,8 @@ public class MyDate
         get => second;
         set
         {
-            if (second - value < 0)
-                throw new ArgumentException("Seconds cannot be negative!");
+            if (value < 0 || value > 59)
+                throw new ArgumentException("Seconds should be >= 0 and <= 59!");
             second = value;
         }
     }
