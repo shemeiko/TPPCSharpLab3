@@ -116,12 +116,12 @@ public class MyDate
         return newDate;
     }
 
-    public MyDate AddHours(int years)
+    public MyDate AddHours(int hours)
     {
-        if (years < 0) throw new ArgumentException("years cannot be negative!");
+        if (hours < 0) throw new ArgumentException("years cannot be negative!");
 
         MyDate newDate = ShallowCopy();
-        newDate.year += years;
+        newDate.hour += hours;
         newDate.NormalizeTime();
 
         return newDate;
