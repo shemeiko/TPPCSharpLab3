@@ -31,7 +31,7 @@ public class MyDate
         }
     }
 
-    public int Seconds
+    public int Second
     {
         get => second;
         set
@@ -48,9 +48,9 @@ public class MyDate
         day = date.Day;
         month = date.Month;
         year = date.Year;
-        hour = date.Hour;
-        minute = date.Minute;
-        second = date.Second;
+        Hour = date.Hour;
+        Minute = date.Minute;
+        Second = date.Second;
     }
 
     public MyDate(long ticks)
@@ -59,9 +59,9 @@ public class MyDate
         year = date.Year;
         month = date.Month;
         day = date.Day;
-        hour = date.Hour;
-        minute = date.Minute;
-        second = date.Second;
+        Hour = date.Hour;
+        Minute = date.Minute;
+        Second = date.Second;
     }
 
     public MyDate(string strdate)
@@ -69,9 +69,9 @@ public class MyDate
         if (strdate.Length < 1)
             throw new ArgumentException("Invalid date!");
 
-        string[] o = strdate.Split(" ");
+        string[] o = strdate.Split(' ');
 
-        string[] date = o[0].Split("/");
+        string[] date = o[0].Split('/');
         if (date.Length != 3)
             throw new ArgumentException("Invalid date format! Use / as separator");
 
@@ -81,14 +81,14 @@ public class MyDate
 
         if (o.Length > 1)
         {
-            string[] time = o[1].Split(":");
+            string[] time = o[1].Split(':');
             if (time is null || time.Length != 3)
                 throw new ArgumentException("Invalid time format! Use : as separator");
             else
             {
-                hour = int.Parse(time[0]);
-                minute = int.Parse(time[1]);
-                second = int.Parse(time[2]);
+                Hour = int.Parse(time[0]);
+                Minute = int.Parse(time[1]);
+                Second = int.Parse(time[2]);
             }
         }
         CheckFormat();
@@ -137,7 +137,7 @@ public class MyDate
 
         return newDate;
     }
-    
+
     public MyDate AddMonths(int months)
     {
         if (months < 0) throw new ArgumentException("months cannot be negative!");
@@ -158,7 +158,7 @@ public class MyDate
 
         return newDate;
     }
-    
+
     public MyDate NextDay()
     {
         MyDate newDate = ShallowCopy();
@@ -177,10 +177,7 @@ public class MyDate
     };
 
     public static bool IsLeapYear(int year) =>
-        (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0));
-
-    public override string ToString() =>
-        $"{day}/{month}/{year} {hour:D2}:{minute:D2}:{second:D2}";
+        year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
 
     private void NormalizeDate()
     {
@@ -221,7 +218,7 @@ public class MyDate
     private bool IsTimeInvalid()
     {
         if (second > 59 || second < 0
-            || minute < 0 || minute > 59 
+            || minute < 0 || minute > 59
             || hour < 0 || hour > 23)
             return true;
         return false;
@@ -234,4 +231,7 @@ public class MyDate
     }
 
     private MyDate ShallowCopy() => (MyDate)MemberwiseClone();
+
+    public override string ToString() =>
+        $"{day}/{month}/{year} {hour:D2}:{minute:D2}:{second:D2}";
 }
