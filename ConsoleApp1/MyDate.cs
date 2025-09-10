@@ -205,7 +205,7 @@ public class MyDate
         day += hour / 24;
         hour %= 24;
 
-        NormalizeDate();
+        if (day > 0) NormalizeDate();
     }
 
     private bool IsDateInvalid()
@@ -229,7 +229,7 @@ public class MyDate
         if (IsDateInvalid()) throw new ArgumentException("Wrong date!");
         if (IsTimeInvalid()) throw new ArgumentException("Wrong time!");
     }
-
+    
     private MyDate ShallowCopy() => (MyDate)MemberwiseClone();
 
     public override string ToString() =>
